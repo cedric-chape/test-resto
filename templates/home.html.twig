@@ -6,7 +6,7 @@
 <div class="jumbotron text-center">
     <h1>Les horaires des restos à Euratech</h1>
     <p>Une petite faim ? Envie de réserver votre table ? Ce site est fait pour vous ! Vous trouverez toutes les informations
-    des restaurants sur Euratechnologies tels que horaires d'ouverture, type de restaurant, etc...</p>
+    des restaurants sur Euratechnologies tels que horaires d'ouverture, type de restaurant, coordonnées, etc...</p>
 </div>
 <div class="container">
     <h2>Liste des restos à Euratech</h2>
@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <a href="">{{ restaurant.name }}</a>
+                        <a href="{{ path('restaurant.show', {id: restaurant.id}) }}">{{ restaurant.name }}</a>
                     </h5>
                 </div>
             </div>

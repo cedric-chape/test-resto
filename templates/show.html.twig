@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'Horaires du restaurant' %}
+
+{% block body %}
+<div class="jumbotron text-center">
+    <h1>Horaires du resto {{ restaurant.name }}</h1>
+</div>
+<div class="container">
+    <div class="row flex">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Jour</th>
+                    <th scope="col">Midi</th>
+                    <th scope="col">Soir</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for horaire in horaires %}
+                <tr>
+                    <td>{{ horaire.dayType }}
+                    {% if (horaire.beginHourAm is null) and (horaire.beginHourPm is null) %}
+                    <td>FERME</td><td></td>
+                    {% else %}
+                        {%  if horaire.beginHourAm is not null %}
+                            <td>{{ horaire.beginHourAm | date('H:i') }} - {{ horaire.endHourAm | date('H:i') }}</td>
+                        {% else %}
+                            <td>-</td>
+                        {% endif %}  
+                        {% if horaire.beginHourPm is not null %}
+                            <td>{{ horaire.beginHourPm | date('H:i') }} - {{ horaire.endHourPm | date('H:i') }}</td>
+                        {% else %}
+                            <td>-</td>
+                        {% endif %}
+                    {% endif %}
+                </tr>    
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+        <a href="">Modifier</a>  -  <a href="{{ path('home') }}">Retour à la liste</a>
+</div>
+
+{% endblock %}
